@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Maintenance Request System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Property Maintenance Request System</h1>
+        <p>Submit a maintenance issue for your building or apartment.</p>
+
+        <form method="POST" action="/submit">
+            <label>Tenant Name</label>
+            <input type="text" name="tenant_name" required>
+
+            <label>Unit Number</label>
+            <input type="text" name="unit_number" required>
+
+            <label>Building Name</label>
+            <input type="text" name="building_name" required>
+
+            <label>Issue Category</label>
+            <select name="issue_category" required>
+                <option value="">Select one</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="HVAC">HVAC</option>
+                <option value="Appliance">Appliance</option>
+                <option value="Leak">Leak</option>
+                <option value="Pest Control">Pest Control</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label>Priority</label>
+            <select name="priority" required>
+                <option value="">Select one</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Urgent">Urgent</option>
+            </select>
+
+            <label>Description</label>
+            <textarea name="description" rows="5" required></textarea>
+
+            <label>Preferred Visit Date</label>
+            <input type="date" name="preferred_visit_date">
+
+            <button type="submit">Submit Request</button>
+        </form>
+
+        <div class="link-row">
+            <a href="/dashboard">View Maintenance Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
