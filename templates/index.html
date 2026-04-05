@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintenance Request</title>
+</head>
+<body>
+    <h1>Submit Maintenance Request</h1>
+
+    <form method="POST">
+        Name: <input name="tenant_name"><br>
+        Unit: <input name="unit_number"><br>
+        Building: <input name="building_name"><br>
+        Category: <input name="issue_category"><br>
+        Priority: <input name="priority"><br>
+        Description: <textarea name="description"></textarea><br>
+        Date: <input type="date" name="preferred_visit_date"><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <a href="/dashboard">Go to Dashboard</a>
+</body>
+</html>
