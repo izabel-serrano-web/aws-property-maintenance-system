@@ -1,58 +1,63 @@
 # AWS Property Maintenance Request System
 
 ## Overview
-A property management web application that allows tenants to submit maintenance issues and allows staff to review submitted requests in a dashboard.
+A cloud-based web application for submitting and tracking property 
+maintenance requests.
+The system is deployed on AWS and demonstrates a production-style 
+architecture using load balancing, compute, and managed database services.
 
 ## Business Use Case
-Property management teams often need a simple internal system to track tenant maintenance issues such as plumbing, HVAC, electrical, leaks, and appliance problems. This application provides a lightweight request intake workflow and dashboard view.
+Property management teams require a reliable and centralized system to 
+handle tenant maintenance requests.
+This application provides a structured workflow for submission, storage, 
+and review of service requests while leveraging scalable cloud 
+infrastructure.
 
 ## Features
-- Submit maintenance requests
-- Validate required form fields
-- Persist requests in a database
-- View submitted requests in a dashboard
-- Track request status
+- Submit maintenance requests through a web interface
+- Validate required input fields
+- Store requests in a relational database
+- View and manage requests in a dashboard
+- Track request details and status
 
 ## Technology Stack
+
+Application
 - Python
 - Flask
 - SQLAlchemy
-- SQLite for local development
-- MySQL-compatible support for AWS RDS deployment
 
-## Architecture Approach
-This application is designed with environment-based database configuration:
-- Local development uses SQLite
-- AWS deployment uses MySQL on Amazon RDS
+Cloud Infrastructure
+- Amazon EC2
+- Application Load Balancer (ALB)
+- Amazon RDS (MySQL)
+- Amazon CloudWatch
 
-The same application code is reused across both environments.
+## Architecture
+User requests are routed through an Application Load Balancer to a Flask 
+application running on EC2.
+The application processes and stores data in an RDS MySQL database.
 
-## Local Run Instructions
-1. Create and activate a virtual environment
-2. Install dependencies from `app/requirements.txt`
-3. Run `python app/app.py`
-4. Open `http://127.0.0.1:5051`
+## Deployment Details
+- Application runs on port 5001
+- ALB distributes traffic to EC2 instance
+- Health checks configured for application endpoint
+- Security groups restrict direct access to the instance
+- Database is deployed in a private network layer
 
-## Planned AWS Deployment
-- VPC
-- Public and private subnets
-- Security groups
-- Amazon RDS MySQL
-- Amazon EC2 for app hosting
-- Application Load Balancer
+## Monitoring
+- CloudWatch alarms configured for CPU usage
+- Billing alerts enabled
+- Centralized monitoring of application health
 
-## Why This Project Matters
-This project demonstrates:
-- full-stack application flow
-- database-backed persistence
-- validation and error handling
-- environment-based configuration
-- cloud-ready application design
+## Outcome
+The system demonstrates the ability to design, deploy, and troubleshoot a 
+multi-tier AWS application, including networking, load balancing, and 
+database integration.
 
 ## Future Improvements
-- request status update workflow
-- authentication
-- filtering and search
-- CI/CD pipeline
-- Terraform deployment
-- HTTPS with ACM and Route 53
+- User authentication and role-based access
+- REST API implementation
+- Domain integration using Route 53
+- Production deployment with Gunicorn
+- Containerization using Docker
